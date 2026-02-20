@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
@@ -69,7 +69,9 @@
         font-size: 16px;
         line-height: 1.6;
         overflow-x: hidden;
-        transition: background 0.4s, color 0.4s;
+        transition:
+          background 0.4s,
+          color 0.4s;
       }
       body::before {
         content: '';
@@ -98,7 +100,9 @@
         background: var(--nav-bg);
         backdrop-filter: blur(18px);
         border-bottom: 1px solid var(--border);
-        transition: background 0.4s, border-color 0.4s;
+        transition:
+          background 0.4s,
+          border-color 0.4s;
       }
       .nav-logo {
         font-family: 'Syne', sans-serif;
@@ -438,7 +442,10 @@
         pointer-events: none;
         z-index: 20;
         transform: translate(-50%, -50%);
-        transition: width 0.12s, height 0.12s, opacity 0.2s;
+        transition:
+          width 0.12s,
+          height 0.12s,
+          opacity 0.2s;
         opacity: 0;
       }
       .cursor-ring.active {
@@ -491,7 +498,9 @@
         border: 1px solid var(--border);
         border-radius: 10px;
         padding: 1.5rem;
-        transition: border-color 0.3s, transform 0.3s;
+        transition:
+          border-color 0.3s,
+          transform 0.3s;
       }
       .about-card:hover {
         border-color: rgba(var(--accentRGB), 0.35);
@@ -611,7 +620,9 @@
         margin-bottom: 3.5rem;
         opacity: 0;
         transform: translateY(20px);
-        transition: opacity 0.5s, transform 0.5s;
+        transition:
+          opacity 0.5s,
+          transform 0.5s;
       }
       .tl-item.visible {
         opacity: 1;
@@ -1135,7 +1146,9 @@
       .fade-up {
         opacity: 0;
         transform: translateY(28px);
-        transition: opacity 0.65s ease, transform 0.65s ease;
+        transition:
+          opacity 0.65s ease,
+          transform 0.65s ease;
       }
       .fade-up.visible {
         opacity: 1;
@@ -1144,7 +1157,9 @@
       .fade-stagger > * {
         opacity: 0;
         transform: translateY(22px);
-        transition: opacity 0.5s ease, transform 0.5s ease;
+        transition:
+          opacity 0.5s ease,
+          transform 0.5s ease;
       }
       .fade-stagger.visible > *:nth-child(1) {
         opacity: 1;
@@ -1778,14 +1793,14 @@
       document
         .getElementById('burger')
         .addEventListener('click', () =>
-          document.getElementById('navLinks').classList.toggle('open')
+          document.getElementById('navLinks').classList.toggle('open'),
         );
       document
         .querySelectorAll('.nav-links a')
         .forEach((a) =>
           a.addEventListener('click', () =>
-            document.getElementById('navLinks').classList.remove('open')
-          )
+            document.getElementById('navLinks').classList.remove('open'),
+          ),
         );
 
       /* ══════════════════════════════════════
@@ -1952,7 +1967,7 @@
             for (let j = i + 1; j < particles.length; j++) {
               const d = Math.hypot(
                 particles[i].x - particles[j].x,
-                particles[i].y - particles[j].y
+                particles[i].y - particles[j].y,
               );
               if (d < 115) {
                 ctx.beginPath();
@@ -2064,7 +2079,7 @@
               interacted = true;
             }
           },
-          { passive: false }
+          { passive: false },
         );
         pg.addEventListener('touchend', (e) => {
           const r = pg.getBoundingClientRect();
@@ -2075,14 +2090,17 @@
 
       /* ══ SCROLL OBSERVERS ══ */
       function obs(sel, cb, opts) {
-        const o = new IntersectionObserver((entries) => {
-          entries.forEach((e) => {
-            if (e.isIntersecting) {
-              cb(e.target);
-              o.unobserve(e.target);
-            }
-          });
-        }, opts || { threshold: 0.12 });
+        const o = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                cb(e.target);
+                o.unobserve(e.target);
+              }
+            });
+          },
+          opts || { threshold: 0.12 },
+        );
         document.querySelectorAll(sel).forEach((el) => o.observe(el));
       }
 
@@ -2093,7 +2111,7 @@
         (el) => {
           el.style.width = el.dataset.width + '%';
         },
-        { threshold: 0.4 }
+        { threshold: 0.4 },
       );
       obs(
         '.hero-stat-num',
@@ -2106,7 +2124,7 @@
             if (count >= target) clearInterval(t);
           }, 16);
         },
-        { threshold: 0.5 }
+        { threshold: 0.5 },
       );
 
       // Timeline stagger
@@ -2117,13 +2135,13 @@
             entries.forEach((e) => {
               if (e.isIntersecting) {
                 items.forEach((el, i) =>
-                  setTimeout(() => el.classList.add('visible'), i * 130)
+                  setTimeout(() => el.classList.add('visible'), i * 130),
                 );
                 o.disconnect();
               }
             });
           },
-          { threshold: 0.05 }
+          { threshold: 0.05 },
         );
         if (items[0]) o.observe(items[0]);
       })();
@@ -2165,7 +2183,7 @@
           mcontent.innerHTML = CASES[k];
           overlay.classList.add('active');
           document.body.style.overflow = 'hidden';
-        })
+        }),
       );
       const closeModal = () => {
         overlay.classList.remove('active');
